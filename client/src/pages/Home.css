@@ -1,0 +1,13 @@
+.home_bg {
+    background-image: url(../assests/CoverA.png);
+    height: 87vh;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    overflow-x: hidden;
+}
+
+.home-message-icon {
+    margin-left: 10px;
+    display: inline-block;
+}

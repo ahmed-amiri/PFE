@@ -1,0 +1,8 @@
+.login_bg {
+    background-image: url(../assests/CoverB.jpg);
+    height: 87vh;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    overflow-x: hidden;
+}

@@ -1,0 +1,33 @@
+.signup_bg {
+    background-image: url(../assests/CoverB.jpg);
+    height: 87vh;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    overflow-x: hidden;
+}
+
+.signup-profile-pic_container {
+    width: 90px;
+    height: 90px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.signup-profile-pic {
+    width: 90px;
+    border-radius: 50%;
+    border: 2px solid gray;
+    object-fit: cover;
+    height: 90px;  
+
+}
+
+.add-picture-icon {
+    position: absolute;
+    bottom: 0;
+    right: 12px;
+    color: #00FF00;
+    background: white;
+    cursor: pointer;
+}
