@@ -1,18 +1,23 @@
 import React from 'react'
 import {Col, Container, Row, Form, Button} from 'react-bootstrap'
 import {useState} from 'react'
-import {Link} from 'react-router-dom'
+import {Link, useNavigate} from 'react-router-dom'
 import "./Signup.css"
 import profile from "../assests/default.png"
+import {useSignupUserMutation} from '../services/appApi'
 
 function Signup() {
     const [name, setName] = useState("")
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
+    const navigate = useNavigate()
+
+    const [signupUser, {isLoading, error}] = useSignupUserMutation()
 
     const [image, setImage] = useState(null)
     const [uploadingImg, setUploadingImg] = useState(null)
     const [imagePreview, setImagePreview] = useState(null)
+
 
     function ValidateImg(e) {
         const file = e.target.files[0]
@@ -52,7 +57,12 @@ async function handleSignup(e){
     if (!image) return alert('Please set your profile picture')
     const url = await uploadImage(image)
     console.log(url);
-
+    signupUser({name, email, password, picture: url}).then(({data}) => {
+        if(data){
+            console.log(data);
+            navigate('/login')
+        }
+    })
 }
      
    return(
