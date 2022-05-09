@@ -1,7 +1,7 @@
 const express = require('express')
 const app = express()
 const userRoutes = require('./routes/userRoutes');
-const rooms = ['general', 'training', 'AFK'];
+const rooms = ['General', 'Work', 'AFK'];
 const cors = require('cors');
 const mongoose = require('mongoose');
 const Message = require('./models/Message');
@@ -55,9 +55,10 @@ io.on('connection',(socket) => {
     
   })
 
-  socket.on('join-room', async (room) => {
-    socket.join(room)
-    let roomMessages = await getLastMsg(room)
+  socket.on('join-room', async (newRoom, previousRoom) => {
+    socket.join(newRoom)
+    socket.leave(previousRoom)
+    let roomMessages = await getLastMsg(newRoom)
     roomMessages = sortMsgByDate(roomMessages)
     socket.emit('room-messages', roomMessages)
   })
@@ -73,10 +74,10 @@ io.on('connection',(socket) => {
 
   app.delete('/logout', async(req, res) => {
     try {
-      const {_id, newMessage} = req.body
+      const {_id, newMessages} = req.body
       const user = await User.findById(_id)
       user.status = 'offline'
-      user.newMessage = newMessage
+      user.newMessages = newMessages
       await user.save()
       
       const members = await User.find()

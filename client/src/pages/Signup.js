@@ -79,7 +79,7 @@ async function handleSignup(e){
         </label>
         <input type='file' id='image-upload' hidden accept="image/png image/jpeg" onChange={ValidateImg}/>
     </div>
-
+    {error && <p className='alert alert-danger'>{error.data}</p>}
     <Form.Group className="mb-3" controlId="formBasicName">
     <Form.Label>Full name</Form.Label>
     <Form.Control type="text" placeholder="Your full name" onChange={(e) => setName(e.target.value)} value={name} />
@@ -95,7 +95,7 @@ async function handleSignup(e){
     <Form.Control type="password" placeholder="Enter password" onChange={(e) => setPassword(e.target.value)} value={password} />
     </Form.Group>
     <Button variant="primary" type="submit">
-        {uploadingImg ? "Signing up.." : "Signup"}
+        {uploadingImg || isLoading ? "Signing up.." : "Signup"}
         </Button>
     <div className="py-4">
     <p className="text-center">

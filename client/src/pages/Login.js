@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import {Col, Container, Row, Form, Button} from 'react-bootstrap'
+import {Col, Container, Row, Form, Button, Spinner} from 'react-bootstrap'
 import {Link, useNavigate} from 'react-router-dom'
 import "./Login.css"
 import {useState} from 'react'
@@ -36,6 +36,7 @@ function Login() {
 
   <Form style={{width: "80%", maxWidth: 500}} onSubmit={handleLogin}>
   <Form.Group className="mb-3" controlId="formBasicEmail">
+    {error && <p className='alert alert-danger'>{error.data}</p>}
   <Form.Label>Email address</Form.Label>
   <Form.Control type="email" placeholder="Enter email" onChange={(e) => setEmail(e.target.value)} value={email} required />
   </Form.Group>
@@ -45,8 +46,8 @@ function Login() {
   <Form.Control type="password" placeholder="Enter password" onChange={(e) => setPassword(e.target.value)} value={password} required />
   </Form.Group>
     <Button variant="primary" type="submit">
-     Login
-    </Button>
+     {isLoading ? <Spinner animation='grow'/> : 'Login'}
+         </Button>
    <div className="py-4">
      <p className="text-center">
         Don't have an account? <Link to ="/signup">Signup</Link>

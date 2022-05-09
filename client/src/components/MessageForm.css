@@ -3,3 +3,50 @@
     border: 1px solid lightgray;
     overflow-y: scroll;
 }
+
+.message-inner{
+    margin-left: 20px;
+    margin-bottom: 10px;
+    padding: 10px;
+    min-width: 200px;
+    max-width: 90%;
+    text-align: left;
+    min-height: 80px;
+    font: 400 lem, sans-serif;
+    display: inline-block;
+    border-radius: 15px;
+    background-color: #9fc5e8;
+}
+
+.incoming-message
+.message-inner{
+    background-color: #ffe599;
+}
+
+.incoming-message{
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 20px;
+}
+
+.message-timestamp-left{
+    font-size: 0.85em;
+    font-weight: 300;
+    margin-top: 15px;
+}
+
+.message-sender{
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.message-date-indicator{
+    width: 150px;
+    margin: 0 auto;
+}
+
+.conversation-info{
+    padding: 0;
+    margin: 0 auto; 
+    text-align: center;
+}
